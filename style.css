@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a1a1a; /* Fundo bem escuro para destacar o branco translúcido */
+    overflow: hidden;
+    cursor: grab;
+}
+
+body:active {
+    cursor: grabbing;
+}
+
+.scene {
+    width: 200px;
+    height: 200px;
+    perspective: 1000px; 
+}
+
+.cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg) rotateY(45deg);
+}
+
+.piece {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 70px;
+    left: 70px;
+    transform-style: preserve-3d;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #000000; /* Contorno preto */
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.6); /* Branco translúcido */
+    /* Opcional: um leve brilho interno para dar mais volume de vidro */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1); 
+}
+
+/* Dobrando as faces */
+.face.front  { transform: rotateY(0deg) translateZ(30px); }
+.face.back   { transform: rotateY(180deg) translateZ(30px); }
+.face.right  { transform: rotateY(90deg) translateZ(30px); }
+.face.left   { transform: rotateY(-90deg) translateZ(30px); }
+.face.top    { transform: rotateX(90deg) translateZ(30px); }
+.face.bottom { transform: rotateX(-90deg) translateZ(30px); }
